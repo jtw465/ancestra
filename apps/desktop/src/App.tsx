@@ -1,49 +1,87 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import { invoke } from "@tauri-apps/api/core";
 import "./App.css";
 
 function App() {
-  const [greetMsg, setGreetMsg] = useState("");
-  const [name, setName] = useState("");
-
-  async function greet() {
-    // Learn more about Tauri commands at https://tauri.app/develop/calling-rust/
-    setGreetMsg(await invoke("greet", { name }));
-  }
-
   return (
-    <main className="container">
-      <h1>Welcome to Tauri + React</h1>
+    <main className="app-shell">
+      <aside className="sidebar">
+        <div className="brand-mark">A</div>
 
-      <div className="row">
-        <a href="https://vite.dev" target="_blank">
-          <img src="/vite.svg" className="logo vite" alt="Vite logo" />
-        </a>
-        <a href="https://tauri.app" target="_blank">
-          <img src="/tauri.svg" className="logo tauri" alt="Tauri logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <p>Click on the Tauri, Vite, and React logos to learn more.</p>
+        <div>
+          <h1>Ancestra</h1>
+          <p>Legacy Intelligence Studio</p>
+        </div>
 
-      <form
-        className="row"
-        onSubmit={(e) => {
-          e.preventDefault();
-          greet();
-        }}
-      >
-        <input
-          id="greet-input"
-          onChange={(e) => setName(e.currentTarget.value)}
-          placeholder="Enter a name..."
-        />
-        <button type="submit">Greet</button>
-      </form>
-      <p>{greetMsg}</p>
+        <nav className="studio-nav">
+          <button className="nav-item active">Fast Path</button>
+          <button className="nav-item">Intake</button>
+          <button className="nav-item">Transcription</button>
+          <button className="nav-item">Correction</button>
+          <button className="nav-item">Export</button>
+        </nav>
+      </aside>
+
+      <section className="workspace">
+        <header className="workspace-header">
+          <div>
+            <p className="eyebrow">Tier 1 Focus</p>
+            <h2>Data Entry Acceleration</h2>
+            <p className="subtitle">
+              Convert real-world genealogy materials into structured, usable data.
+            </p>
+          </div>
+
+          <button className="primary-button">Start Import</button>
+        </header>
+
+        <section className="fast-path-card">
+          <div className="step-card">
+            <span>01</span>
+            <h3>Import</h3>
+            <p>Bring in text, PDFs, scans, images, charts, reports, or certificates.</p>
+          </div>
+
+          <div className="step-card">
+            <span>02</span>
+            <h3>Extract</h3>
+            <p>Use OCR and text parsing to find names, dates, places, and relationships.</p>
+          </div>
+
+          <div className="step-card">
+            <span>03</span>
+            <h3>Fix</h3>
+            <p>Edit OCR text and extracted fields before anything is exported.</p>
+          </div>
+
+          <div className="step-card">
+            <span>04</span>
+            <h3>Export</h3>
+            <p>Prepare clean data for genealogy programs using GEDCOM, JSON, or CSV.</p>
+          </div>
+        </section>
+
+        <section className="status-panel">
+          <h3>Current Build Goal</h3>
+          <p>
+            Build the simplest useful workflow first: import genealogy material, extract
+            draft data, correct it, then export it.
+          </p>
+
+          <div className="status-grid">
+            <div>
+              <strong>Primary Bottleneck</strong>
+              <span>Manual data entry</span>
+            </div>
+            <div>
+              <strong>Current Tier</strong>
+              <span>Tier 1 — EliteDesk Alpha</span>
+            </div>
+            <div>
+              <strong>Core Rule</strong>
+              <span>Speed first, correction always</span>
+            </div>
+          </div>
+        </section>
+      </section>
     </main>
   );
 }
